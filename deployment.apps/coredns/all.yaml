@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-06-01T19:54:30Z"
+  creationTimestamp: "2020-09-19T08:15:50Z"
   generation: 1
   labels:
     k8s-app: kube-dns
@@ -132,7 +132,7 @@ metadata:
                 f:name: {}
     manager: kubeadm
     operation: Update
-    time: "2020-06-01T19:54:30Z"
+    time: "2020-09-19T08:15:50Z"
   - apiVersion: apps/v1
     fieldsType: FieldsV1
     fieldsV1:
@@ -141,6 +141,7 @@ metadata:
           .: {}
           f:deployment.kubernetes.io/revision: {}
       f:status:
+        f:availableReplicas: {}
         f:conditions:
           .: {}
           k:{"type":"Available"}:
@@ -160,17 +161,17 @@ metadata:
             f:status: {}
             f:type: {}
         f:observedGeneration: {}
+        f:readyReplicas: {}
         f:replicas: {}
-        f:unavailableReplicas: {}
         f:updatedReplicas: {}
     manager: kube-controller-manager
     operation: Update
-    time: "2020-06-01T19:54:35Z"
+    time: "2020-09-19T08:39:44Z"
   name: coredns
   namespace: kube-system
-  resourceVersion: "360"
+  resourceVersion: "2665"
   selfLink: /apis/apps/v1/namespaces/kube-system/deployments/coredns
-  uid: 4ecab435-c060-4746-bc46-990582745d67
+  uid: cd316232-acec-45b2-833d-7cbd8dab4a7c
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -193,7 +194,7 @@ spec:
       - args:
         - -conf
         - /etc/coredns/Corefile
-        image: k8s.gcr.io/coredns:1.6.7
+        image: k8s.gcr.io/coredns:1.7.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
@@ -269,20 +270,21 @@ spec:
           name: coredns
         name: config-volume
 status:
+  availableReplicas: 2
   conditions:
-  - lastTransitionTime: "2020-06-01T19:54:35Z"
-    lastUpdateTime: "2020-06-01T19:54:35Z"
-    message: Deployment does not have minimum availability.
-    reason: MinimumReplicasUnavailable
-    status: "False"
-    type: Available
-  - lastTransitionTime: "2020-06-01T19:54:35Z"
-    lastUpdateTime: "2020-06-01T19:54:35Z"
-    message: ReplicaSet "coredns-66bff467f8" is progressing.
-    reason: ReplicaSetUpdated
+  - lastTransitionTime: "2020-09-19T08:16:02Z"
+    lastUpdateTime: "2020-09-19T08:19:28Z"
+    message: ReplicaSet "coredns-f9fd979d6" has successfully progressed.
+    reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
+  - lastTransitionTime: "2020-09-19T08:39:36Z"
+    lastUpdateTime: "2020-09-19T08:39:36Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
   observedGeneration: 1
+  readyReplicas: 2
   replicas: 2
-  unavailableReplicas: 2
   updatedReplicas: 2
