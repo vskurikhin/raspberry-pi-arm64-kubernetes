@@ -1,0 +1,390 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-09-19T08:17:51Z"
+  generateName: kube-flannel-ds-
+  labels:
+    app: flannel
+    controller-revision-hash: XXXXXXXXXX
+    pod-template-generation: "1"
+    tier: node
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:controller-revision-hash: {}
+          f:pod-template-generation: {}
+          f:tier: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"ed8e6948-bc7d-4e81-9370-e9562d5c5610"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:affinity:
+          .: {}
+          f:nodeAffinity:
+            .: {}
+            f:requiredDuringSchedulingIgnoredDuringExecution:
+              .: {}
+              f:nodeSelectorTerms: {}
+        f:containers:
+          k:{"name":"kube-flannel"}:
+            .: {}
+            f:args: {}
+            f:command: {}
+            f:env:
+              .: {}
+              k:{"name":"POD_NAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+              k:{"name":"POD_NAMESPACE"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources:
+              .: {}
+              f:limits:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:securityContext:
+              .: {}
+              f:capabilities:
+                .: {}
+                f:add: {}
+              f:privileged: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/etc/kube-flannel/"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/run/flannel"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:hostNetwork: {}
+        f:initContainers:
+          .: {}
+          k:{"name":"install-cni"}:
+            .: {}
+            f:args: {}
+            f:command: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/etc/cni/net.d"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/etc/kube-flannel/"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:priorityClassName: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+        f:tolerations: {}
+        f:volumes:
+          .: {}
+          k:{"name":"cni"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"flannel-cfg"}:
+            .: {}
+            f:configMap:
+              .: {}
+              f:defaultMode: {}
+              f:name: {}
+            f:name: {}
+          k:{"name":"run"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-09-19T08:17:51Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:initContainerStatuses: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"192.168.21.40"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-09-19T08:39:26Z"
+  name: kube-flannel-ds-9bmdt
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: kube-flannel-ds
+    uid: ed8e6948-bc7d-4e81-9370-e9562d5c5610
+  resourceVersion: "2600"
+  selfLink: /api/v1/namespaces/kube-system/pods/kube-flannel-ds-9bmdt
+  uid: 5a14ec88-5e1c-4f5c-9f47-4998f3028be7
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchFields:
+          - key: metadata.name
+            operator: In
+            values:
+            - rpi00
+  containers:
+  - args:
+    - --ip-masq
+    - --kube-subnet-mgr
+    command:
+    - /opt/bin/flanneld
+    env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    image: quay.io/coreos/flannel:v0.13.0-rc2
+    imagePullPolicy: IfNotPresent
+    name: kube-flannel
+    resources:
+      limits:
+        cpu: 100m
+        memory: 50Mi
+      requests:
+        cpu: 100m
+        memory: 50Mi
+    securityContext:
+      capabilities:
+        add:
+        - NET_ADMIN
+        - NET_RAW
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /run/flannel
+      name: run
+    - mountPath: /etc/kube-flannel/
+      name: flannel-cfg
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: flannel-token-f97lh
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostNetwork: true
+  initContainers:
+  - args:
+    - -f
+    - /etc/kube-flannel/cni-conf.json
+    - /etc/cni/net.d/10-flannel.conflist
+    command:
+    - cp
+    image: quay.io/coreos/flannel:v0.13.0-rc2
+    imagePullPolicy: IfNotPresent
+    name: install-cni
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/cni/net.d
+      name: cni
+    - mountPath: /etc/kube-flannel/
+      name: flannel-cfg
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: flannel-token-f97lh
+      readOnly: true
+  nodeName: rpi00
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: flannel
+  serviceAccountName: flannel
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/pid-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/network-unavailable
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /run/flannel
+      type: ""
+    name: run
+  - hostPath:
+      path: /etc/cni/net.d
+      type: ""
+    name: cni
+  - configMap:
+      defaultMode: 420
+      name: kube-flannel-cfg
+    name: flannel-cfg
+  - name: flannel-token-f97lh
+    secret:
+      defaultMode: 420
+      secretName: flannel-token-f97lh
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T08:18:30Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T08:39:26Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T08:39:26Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T08:17:51Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://bc14197aabd47bae15271d63b95b3797b0c24ac22aa0119dcc6fc95de777dd5a
+    image: quay.io/coreos/flannel:v0.13.0-rc2
+    imageID: docker-pullable://quay.io/coreos/flannel@sha256:5391451071695141d8d40604c88b76017fa72d5ea7d80f2e87cfe0aaec71dfcb
+    lastState:
+      terminated:
+        containerID: docker://685d31664614538c0deb19f2eae83f6131594a01e79315654b52c4ad6c8e4542
+        exitCode: 137
+        finishedAt: "2020-09-19T08:33:28Z"
+        reason: Error
+        startedAt: "2020-09-19T08:22:46Z"
+    name: kube-flannel
+    ready: true
+    restartCount: 3
+    started: true
+    state:
+      running:
+        startedAt: "2020-09-19T08:39:22Z"
+  hostIP: 192.168.21.40
+  initContainerStatuses:
+  - containerID: docker://d226f510a0a34cfaf2ea4ad7f01ca2a85222d2ee75fe3f4e0698ed94d1bfd7ed
+    image: quay.io/coreos/flannel:v0.13.0-rc2
+    imageID: docker-pullable://quay.io/coreos/flannel@sha256:5391451071695141d8d40604c88b76017fa72d5ea7d80f2e87cfe0aaec71dfcb
+    lastState: {}
+    name: install-cni
+    ready: true
+    restartCount: 2
+    state:
+      terminated:
+        containerID: docker://d226f510a0a34cfaf2ea4ad7f01ca2a85222d2ee75fe3f4e0698ed94d1bfd7ed
+        exitCode: 0
+        finishedAt: "2020-09-19T08:39:15Z"
+        reason: Completed
+        startedAt: "2020-09-19T08:39:15Z"
+  phase: Running
+  podIP: 192.168.21.40
+  podIPs:
+  - ip: 192.168.21.40
+  qosClass: Burstable
+  startTime: "2020-09-19T08:17:51Z"
