@@ -13,7 +13,9 @@ data:
            ttl 30
         }
         prometheus :9153
-        forward . /etc/resolv.conf
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
         cache 30
         loop
         reload
@@ -21,7 +23,7 @@ data:
     }
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2020-06-01T19:54:30Z"
+  creationTimestamp: "2020-09-19T08:15:50Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -31,9 +33,9 @@ metadata:
         f:Corefile: {}
     manager: kubeadm
     operation: Update
-    time: "2020-06-01T19:54:30Z"
+    time: "2020-09-19T08:15:50Z"
   name: coredns
   namespace: kube-system
-  resourceVersion: "225"
+  resourceVersion: "260"
   selfLink: /api/v1/namespaces/kube-system/configmaps/coredns
-  uid: 2f4e2045-1498-4b22-995b-7460e6bcdbcc
+  uid: 1ba61065-83ce-4c80-b087-bff79abd1784
