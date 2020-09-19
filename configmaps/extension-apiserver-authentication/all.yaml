@@ -43,7 +43,7 @@ data:
   requestheader-username-headers: '["X-Remote-User"]'
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2020-06-01T19:54:24Z"
+  creationTimestamp: "2020-09-19T08:15:42Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -58,9 +58,9 @@ metadata:
         f:requestheader-username-headers: {}
     manager: kube-apiserver
     operation: Update
-    time: "2020-06-01T19:54:24Z"
+    time: "2020-09-19T08:15:42Z"
   name: extension-apiserver-authentication
   namespace: kube-system
-  resourceVersion: "24"
+  resourceVersion: "38"
   selfLink: /api/v1/namespaces/kube-system/configmaps/extension-apiserver-authentication
-  uid: 3bf75926-caa6-4162-aa83-6e95911f95b4
+  uid: 0a34f0c0-e490-4cc4-8f51-c03662a25cf5
