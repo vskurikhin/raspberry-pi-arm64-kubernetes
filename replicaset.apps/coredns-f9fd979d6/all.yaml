@@ -1,39 +1,52 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
   annotations:
+    deployment.kubernetes.io/desired-replicas: "2"
+    deployment.kubernetes.io/max-replicas: "3"
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-09-19T08:15:50Z"
+  creationTimestamp: "2020-09-19T08:16:02Z"
   generation: 1
   labels:
     k8s-app: kube-dns
+    pod-template-hash: f9fd979d6
   managedFields:
   - apiVersion: apps/v1
     fieldsType: FieldsV1
     fieldsV1:
       f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/desired-replicas: {}
+          f:deployment.kubernetes.io/max-replicas: {}
+          f:deployment.kubernetes.io/revision: {}
         f:labels:
           .: {}
           f:k8s-app: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"cd316232-acec-45b2-833d-7cbd8dab4a7c"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
       f:spec:
-        f:progressDeadlineSeconds: {}
         f:replicas: {}
-        f:revisionHistoryLimit: {}
         f:selector:
           f:matchLabels:
             .: {}
             f:k8s-app: {}
-        f:strategy:
-          f:rollingUpdate:
-            .: {}
-            f:maxSurge: {}
-            f:maxUnavailable: {}
-          f:type: {}
+            f:pod-template-hash: {}
         f:template:
           f:metadata:
             f:labels:
               .: {}
               f:k8s-app: {}
+              f:pod-template-hash: {}
           f:spec:
             f:containers:
               k:{"name":"coredns"}:
@@ -130,65 +143,39 @@ metadata:
                   f:items: {}
                   f:name: {}
                 f:name: {}
-    manager: kubeadm
-    operation: Update
-    time: "2020-09-19T08:15:50Z"
-  - apiVersion: apps/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:deployment.kubernetes.io/revision: {}
       f:status:
         f:availableReplicas: {}
-        f:conditions:
-          .: {}
-          k:{"type":"Available"}:
-            .: {}
-            f:lastTransitionTime: {}
-            f:lastUpdateTime: {}
-            f:message: {}
-            f:reason: {}
-            f:status: {}
-            f:type: {}
-          k:{"type":"Progressing"}:
-            .: {}
-            f:lastTransitionTime: {}
-            f:lastUpdateTime: {}
-            f:message: {}
-            f:reason: {}
-            f:status: {}
-            f:type: {}
+        f:fullyLabeledReplicas: {}
         f:observedGeneration: {}
         f:readyReplicas: {}
         f:replicas: {}
-        f:updatedReplicas: {}
     manager: kube-controller-manager
     operation: Update
     time: "2020-09-19T08:39:44Z"
-  name: coredns
+  name: coredns-f9fd979d6
   namespace: kube-system
-  resourceVersion: "2665"
-  selfLink: /apis/apps/v1/namespaces/kube-system/deployments/coredns
-  uid: cd316232-acec-45b2-833d-7cbd8dab4a7c
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: coredns
+    uid: cd316232-acec-45b2-833d-7cbd8dab4a7c
+  resourceVersion: "2664"
+  selfLink: /apis/apps/v1/namespaces/kube-system/replicasets/coredns-f9fd979d6
+  uid: e7db3506-82e0-4120-9d28-3ff8e2833e00
 spec:
-  progressDeadlineSeconds: 600
   replicas: 2
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       k8s-app: kube-dns
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 1
-    type: RollingUpdate
+      pod-template-hash: f9fd979d6
   template:
     metadata:
       creationTimestamp: null
       labels:
         k8s-app: kube-dns
+        pod-template-hash: f9fd979d6
     spec:
       containers:
       - args:
@@ -271,20 +258,7 @@ spec:
         name: config-volume
 status:
   availableReplicas: 2
-  conditions:
-  - lastTransitionTime: "2020-09-19T08:16:02Z"
-    lastUpdateTime: "2020-09-19T08:19:28Z"
-    message: ReplicaSet "coredns-f9fd979d6" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  - lastTransitionTime: "2020-09-19T08:39:36Z"
-    lastUpdateTime: "2020-09-19T08:39:36Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
+  fullyLabeledReplicas: 2
   observedGeneration: 1
   readyReplicas: 2
   replicas: 2
-  updatedReplicas: 2

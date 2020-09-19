@@ -16,9 +16,10 @@ data:
         dataDir: /var/lib/etcd
     imageRepository: k8s.gcr.io
     kind: ClusterConfiguration
-    kubernetesVersion: v1.18.3
+    kubernetesVersion: v1.19.2
     networking:
       dnsDomain: cluster.local
+      podSubnet: 10.244.0.0/16
       serviceSubnet: 10.96.0.0/12
     scheduler: {}
   ClusterStatus: |
@@ -30,7 +31,7 @@ data:
     kind: ClusterStatus
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2020-06-01T19:54:27Z"
+  creationTimestamp: "2020-09-19T08:15:46Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -41,9 +42,9 @@ metadata:
         f:ClusterStatus: {}
     manager: kubeadm
     operation: Update
-    time: "2020-06-01T19:54:27Z"
+    time: "2020-09-19T08:15:46Z"
   name: kubeadm-config
   namespace: kube-system
-  resourceVersion: "165"
+  resourceVersion: "164"
   selfLink: /api/v1/namespaces/kube-system/configmaps/kubeadm-config
-  uid: 5aa4c162-8b69-4d86-bff5-7285100831b8
+  uid: d0a7ff9a-c931-4745-8459-3612a08282c4

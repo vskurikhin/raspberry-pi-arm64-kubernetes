@@ -3,13 +3,14 @@ data:
   config.conf: |-
     apiVersion: kubeproxy.config.k8s.io/v1alpha1
     bindAddress: 0.0.0.0
+    bindAddressHardFail: false
     clientConnection:
       acceptContentTypes: ""
       burst: 0
       contentType: ""
       kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
       qps: 0
-    clusterCIDR: ""
+    clusterCIDR: 10.244.0.0/16
     configSyncPeriod: 0s
     conntrack:
       maxPerCore: null
@@ -52,7 +53,7 @@ data:
     clusters:
     - cluster:
         certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-        server: https://192.168.1.4:6443
+        server: https://192.168.21.40:6443
       name: default
     contexts:
     - context:
@@ -67,7 +68,9 @@ data:
         tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2020-06-01T19:54:30Z"
+  annotations:
+    kubeadm.kubernetes.io/component-config.hash: sha256:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  creationTimestamp: "2020-09-19T08:15:50Z"
   labels:
     app: kube-proxy
   managedFields:
@@ -79,14 +82,17 @@ metadata:
         f:config.conf: {}
         f:kubeconfig.conf: {}
       f:metadata:
+        f:annotations:
+          .: {}
+          f:kubeadm.kubernetes.io/component-config.hash: {}
         f:labels:
           .: {}
           f:app: {}
     manager: kubeadm
     operation: Update
-    time: "2020-06-01T19:54:30Z"
+    time: "2020-09-19T08:15:50Z"
   name: kube-proxy
   namespace: kube-system
-  resourceVersion: "238"
+  resourceVersion: "270"
   selfLink: /api/v1/namespaces/kube-system/configmaps/kube-proxy
-  uid: 3f448e82-a2fe-4f08-ab6b-5c32a53a2b8b
+  uid: 0017bede-d41f-4e35-a0b2-cac04c4e1ab3

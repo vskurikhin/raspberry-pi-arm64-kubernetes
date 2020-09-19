@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/port: "9153"
+    prometheus.io/scrape: "true"
+  creationTimestamp: "2020-09-19T08:15:50Z"
+  labels:
+    k8s-app: kube-dns
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: KubeDNS
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:prometheus.io/port: {}
+          f:prometheus.io/scrape: {}
+        f:labels:
+          .: {}
+          f:k8s-app: {}
+          f:kubernetes.io/cluster-service: {}
+          f:kubernetes.io/name: {}
+      f:spec:
+        f:clusterIP: {}
+        f:ports:
+          .: {}
+          k:{"port":53,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+          k:{"port":53,"protocol":"UDP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+          k:{"port":9153,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:k8s-app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubeadm
+    operation: Update
+    time: "2020-09-19T08:15:50Z"
+  name: kube-dns
+  namespace: kube-system
+  resourceVersion: "268"
+  selfLink: /api/v1/namespaces/kube-system/services/kube-dns
+  uid: 19312030-110c-4c02-95c0-6136a593c44c
+spec:
+  clusterIP: 10.96.0.10
+  ports:
+  - name: dns
+    port: 53
+    protocol: UDP
+    targetPort: 53
+  - name: dns-tcp
+    port: 53
+    protocol: TCP
+    targetPort: 53
+  - name: metrics
+    port: 9153
+    protocol: TCP
+    targetPort: 9153
+  selector:
+    k8s-app: kube-dns
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
