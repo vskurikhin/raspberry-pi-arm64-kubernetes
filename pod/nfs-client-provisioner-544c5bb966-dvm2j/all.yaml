@@ -1,0 +1,215 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-09-19T18:08:31Z"
+  generateName: nfs-client-provisioner-544c5bb966-
+  labels:
+    app: nfs-client-provisioner
+    pod-template-hash: 544c5bb966
+    release: nfs-client-provisioner
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:pod-template-hash: {}
+          f:release: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"7519dae4-55a1-4135-8f46-8a04e9ab21ef"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"nfs-client-provisioner"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"NFS_PATH"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"NFS_SERVER"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"PROVISIONER_NAME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/persistentvolumes"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+        f:volumes:
+          .: {}
+          k:{"name":"nfs-client-root"}:
+            .: {}
+            f:name: {}
+            f:nfs:
+              .: {}
+              f:path: {}
+              f:server: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-09-19T18:08:31Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.244.2.15"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-09-19T18:08:45Z"
+  name: nfs-client-provisioner-544c5bb966-dvm2j
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: nfs-client-provisioner-544c5bb966
+    uid: 7519dae4-55a1-4135-8f46-8a04e9ab21ef
+  resourceVersion: "84372"
+  selfLink: /api/v1/namespaces/default/pods/nfs-client-provisioner-544c5bb966-dvm2j
+  uid: 72bd0f2a-c589-4b53-a1fd-ac012c4977ff
+spec:
+  containers:
+  - env:
+    - name: PROVISIONER_NAME
+      value: cluster.local/nfs-client-provisioner
+    - name: NFS_SERVER
+      value: 192.168.21.39
+    - name: NFS_PATH
+      value: /nfs/rpi
+    image: quay.io/external_storage/nfs-client-provisioner-arm:v3.1.0-k8s1.11
+    imagePullPolicy: IfNotPresent
+    name: nfs-client-provisioner
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /persistentvolumes
+      name: nfs-client-root
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: nfs-client-provisioner-token-qdlvm
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: rpi02
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: nfs-client-provisioner
+  serviceAccountName: nfs-client-provisioner
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: nfs-client-root
+    nfs:
+      path: /nfs/rpi
+      server: 192.168.21.39
+  - name: nfs-client-provisioner-token-qdlvm
+    secret:
+      defaultMode: 420
+      secretName: nfs-client-provisioner-token-qdlvm
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T18:08:31Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T18:08:45Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T18:08:45Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-19T18:08:31Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://236af54bcf98b0b19af6b799f8ae2249dc4b437829834b667dd611c98ccc6520
+    image: quay.io/external_storage/nfs-client-provisioner-arm:v3.1.0-k8s1.11
+    imageID: docker-pullable://quay.io/external_storage/nfs-client-provisioner-arm@sha256:ae81ef2e0511f146f6c8f7fb0956e393b4a2919d95482d014dbb2bc0ed07c8c8
+    lastState: {}
+    name: nfs-client-provisioner
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-09-19T18:08:44Z"
+  hostIP: 192.168.21.42
+  phase: Running
+  podIP: 10.244.2.15
+  podIPs:
+  - ip: 10.244.2.15
+  qosClass: BestEffort
+  startTime: "2020-09-19T18:08:31Z"
