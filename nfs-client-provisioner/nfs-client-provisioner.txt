@@ -1,0 +1,7 @@
+# helm install nfs-client-provisioner stable/nfs-client-provisioner --set nfs.server=192.168.21.39 --set nfs.path=/nfs/rpi --set image.repository=quay.io/external_storage/nfs-client-provisioner-arm
+NAME: nfs-client-provisioner
+LAST DEPLOYED: Sat Sep 19 19:08:29 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
