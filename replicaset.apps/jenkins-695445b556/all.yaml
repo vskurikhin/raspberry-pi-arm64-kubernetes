@@ -1,0 +1,189 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "1"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-09-19T19:13:33Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/instance: jenkins
+    app.kubernetes.io/name: jenkins
+    pod-template-hash: 695445b556
+    run: jenkins
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/desired-replicas: {}
+          f:deployment.kubernetes.io/max-replicas: {}
+          f:deployment.kubernetes.io/revision: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+          f:pod-template-hash: {}
+          f:run: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"320cf1e4-b79a-461c-ac33-35e62975cf9b"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:replicas: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+            f:pod-template-hash: {}
+            f:run: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app.kubernetes.io/component: {}
+              f:app.kubernetes.io/instance: {}
+              f:app.kubernetes.io/name: {}
+              f:pod-template-hash: {}
+              f:run: {}
+          f:spec:
+            f:containers:
+              k:{"name":"jenkins"}:
+                .: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":8080,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                  k:{"containerPort":50000,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources:
+                  .: {}
+                  f:limits:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                  f:requests:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/var/jenkins_home"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"jenkinshome"}:
+                .: {}
+                f:name: {}
+                f:persistentVolumeClaim:
+                  .: {}
+                  f:claimName: {}
+      f:status:
+        f:availableReplicas: {}
+        f:fullyLabeledReplicas: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-09-19T19:14:09Z"
+  name: jenkins-695445b556
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: jenkins
+    uid: 320cf1e4-b79a-461c-ac33-35e62975cf9b
+  resourceVersion: "96219"
+  selfLink: /apis/apps/v1/namespaces/default/replicasets/jenkins-695445b556
+  uid: 109d10a6-39c6-4c55-b482-19746610c180
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: jenkins-master
+      app.kubernetes.io/instance: jenkins
+      app.kubernetes.io/name: jenkins
+      pod-template-hash: 695445b556
+      run: jenkins
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/component: jenkins-master
+        app.kubernetes.io/instance: jenkins
+        app.kubernetes.io/name: jenkins
+        pod-template-hash: 695445b556
+        run: jenkins
+    spec:
+      containers:
+      - image: vskurikhin/aarch64-jenkins:v2.249.1.2
+        imagePullPolicy: IfNotPresent
+        name: jenkins
+        ports:
+        - containerPort: 8080
+          name: web
+          protocol: TCP
+        - containerPort: 50000
+          name: slaves
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "4"
+            memory: 3Gi
+          requests:
+            cpu: 50m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/jenkins_home
+          name: jenkinshome
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: jenkinshome
+        persistentVolumeClaim:
+          claimName: jenkins
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
