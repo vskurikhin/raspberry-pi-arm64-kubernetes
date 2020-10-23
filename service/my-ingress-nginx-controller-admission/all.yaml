@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2020-09-19T16:30:06Z"
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: my
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/version: 0.35.0
+    helm.sh/chart: ingress-nginx-3.1.0
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:app.kubernetes.io/version: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":443,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-09-19T16:30:05Z"
+  name: my-ingress-nginx-controller-admission
+  namespace: default
+  resourceVersion: "68729"
+  selfLink: /api/v1/namespaces/default/services/my-ingress-nginx-controller-admission
+  uid: 3091fb85-4637-4f57-ad48-fc829b4c0413
+spec:
+  clusterIP: 10.104.181.81
+  ports:
+  - name: https-webhook
+    port: 443
+    protocol: TCP
+    targetPort: webhook
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: my
+    app.kubernetes.io/name: ingress-nginx
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

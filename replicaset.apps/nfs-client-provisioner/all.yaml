@@ -109,7 +109,7 @@ metadata:
         f:replicas: {}
     manager: kube-controller-manager
     operation: Update
-    time: "2020-09-19T18:08:45Z"
+    time: "2020-10-18T16:14:07Z"
   name: nfs-client-provisioner-544c5bb966
   namespace: default
   ownerReferences:
@@ -119,7 +119,7 @@ metadata:
     kind: Deployment
     name: nfs-client-provisioner
     uid: 4f08c330-d4d4-46aa-8bef-37b3f1e42a29
-  resourceVersion: "84373"
+  resourceVersion: "707602"
   selfLink: /apis/apps/v1/namespaces/default/replicasets/nfs-client-provisioner-544c5bb966
   uid: 7519dae4-55a1-4135-8f46-8a04e9ab21ef
 spec:
