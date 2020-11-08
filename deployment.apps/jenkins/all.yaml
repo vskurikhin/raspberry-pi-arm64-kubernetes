@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-09-19T19:13:33Z"
+  creationTimestamp: "2020-10-17T13:03:35Z"
   generation: 1
   labels:
     app.kubernetes.io/component: jenkins-master
@@ -94,7 +94,7 @@ metadata:
                   f:claimName: {}
     manager: kubectl-create
     operation: Update
-    time: "2020-09-19T19:13:33Z"
+    time: "2020-10-17T13:03:35Z"
   - apiVersion: apps/v1
     fieldsType: FieldsV1
     fieldsV1:
@@ -128,12 +128,12 @@ metadata:
         f:updatedReplicas: {}
     manager: kube-controller-manager
     operation: Update
-    time: "2020-09-19T19:14:09Z"
+    time: "2020-10-17T13:03:41Z"
   name: jenkins
   namespace: default
-  resourceVersion: "96220"
+  resourceVersion: "381841"
   selfLink: /apis/apps/v1/namespaces/default/deployments/jenkins
-  uid: 320cf1e4-b79a-461c-ac33-35e62975cf9b
+  uid: 790039ea-d11c-4711-b3ad-4c0aded01cf1
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -156,7 +156,7 @@ spec:
         run: jenkins
     spec:
       containers:
-      - image: vskurikhin/aarch64-jenkins:v2.249.1.2
+      - image: vskurikhin/aarch64-jenkins:v2.249.1-0
         imagePullPolicy: IfNotPresent
         name: jenkins
         ports:
@@ -190,15 +190,15 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2020-09-19T19:14:09Z"
-    lastUpdateTime: "2020-09-19T19:14:09Z"
+  - lastTransitionTime: "2020-10-17T13:03:41Z"
+    lastUpdateTime: "2020-10-17T13:03:41Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2020-09-19T19:13:33Z"
-    lastUpdateTime: "2020-09-19T19:14:09Z"
-    message: ReplicaSet "jenkins-695445b556" has successfully progressed.
+  - lastTransitionTime: "2020-10-17T13:03:35Z"
+    lastUpdateTime: "2020-10-17T13:03:41Z"
+    message: ReplicaSet "jenkins-59d6b7cd87" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
