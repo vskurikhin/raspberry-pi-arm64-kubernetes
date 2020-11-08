@@ -1,0 +1,11 @@
+# helm install elasticsearch --version 7.9.2 elastic/elasticsearch --set imageTag=7.9.2-arm64 --set resources.requests.memory=1Gi --set volumeClaimTemplate.storageClassName=nfs-client --set volumeClaimTemplate.resources.requests.storage=30Gi
+NAME: elasticsearch
+LAST DEPLOYED: Sun Oct 18 15:47:44 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Watch all cluster members come up.
+  $ kubectl get pods --namespace=default -l app=elasticsearch-master -w
+2. Test cluster health using Helm test.
+  $ helm test elasticsearch --cleanup
