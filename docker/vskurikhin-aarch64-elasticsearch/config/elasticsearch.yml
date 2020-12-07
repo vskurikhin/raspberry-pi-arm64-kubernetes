@@ -1,0 +1,19 @@
+cluster:
+  name: ${CLUSTER_NAME}
+
+node:
+  master: ${NODE_MASTER}
+  data: ${NODE_DATA}
+
+path:
+  data: /data/data
+  logs: /data/log
+  plugins: /elasticsearch/plugins
+  work: /data/work
+
+bootstrap.mlockall: true
+
+network.host: 0.0.0.0
+http.enabled: ${HTTP_ENABLE}
+
+discovery.zen.ping.multicast.enabled: ${MULTICAST}

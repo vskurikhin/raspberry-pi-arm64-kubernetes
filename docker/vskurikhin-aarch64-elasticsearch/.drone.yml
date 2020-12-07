@@ -1,0 +1,20 @@
+clone:
+  environment:
+    - GIT_SSL_NO_VERIFY=true
+build:
+  image: hypriot/rpi-alpine-scratch
+  commands:
+    - sed -e 's/quay.io\/pires\/docker-jre:8u72/larmog\/armhf-alpine-java:jdk-8u73/g' Dockerfile > Dockerfile.armhf
+publish:
+  docker:
+    environment:
+      - DOCKER_LAUNCH_DEBUG=true
+#    storage_driver: overlay
+    file: Dockerfile.armhf
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PWD
+    email: lars.mogren@gmail.com
+    repo: larmog/elasticsearch-armhf
+    tag: 
+      - "2.3.0"
+      - latest
